@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <title>React goes for photo</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      function Header(props) {
+        return (
+          <header>
+            <h1>{props.name}'ve made this websites from objects</h1>
+          </header>
+        );
+      }
+
+      function Main(props) {
+        return (
+          <section>
+            <img src="./kafkaffee.png" 
+                 height={200}
+                 alt="another portfolio from me"
+                />
+            <ul>
+              {props.websites.map((website) => (
+                <li key={website.id}>
+                  {website.title}
+                </li>
+              ))}
+            </ul>
+          </section>
+        );
+      }
+
+      function Footer(props) {
+        return (
+          <footer>
+            <p>Cheers from {props.year}</p>
+          </footer>
+        );
+      }
+
+      const websites = [
+        "kafkart.co",
+        "abdullahcok.dev",
+        "merapp.blog"
+      ]
+
+      const websiteObjects = websites.map(
+        (website, i) => ({
+          id: i,
+          title: website
+        })
+      )
+
+      function App() {
+        return (
+          <div>
+            <Header name="I"/>
+            <Main thing="WEBSITE"
+                  websites={websiteObjects}    
+            />
+            <Footer year={new Date().getFullYear()}/>
+          </div>
+        );
+      }
+
+      ReactDOM.render(
+        <App />,
+        document.getElementById("root")
+      );
+    </script>
+  </body>
+</html>
