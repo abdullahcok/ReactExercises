@@ -1,0 +1,64 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic of Component</title>
+
+    <script src="https://unpkg.com/react@18.2.1/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18.2.1/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+<body>
+    
+    <script type="text/babel">
+        
+        
+        //coming after
+
+        reactElement = <MyComponent className="stars-goes" customData="stars"/>;
+
+        // Which also works with an object and the spread (...) operator
+        let props = {
+        className: "abc",
+        customData: "star"
+        };
+
+        reactElement = <MyComponent {...props} />;
+
+        // goes for best component that allows components with dynamic content
+
+        var stars = ["sirius", "electus", "marcus"]
+
+        const stars = stars.map(
+            function(star, index){
+                return (
+                    <MyComponent
+                    className="myClass"
+                    customData={stars}
+                    key={index}
+                    />
+                );
+            }
+        )
+
+
+
+        // to let it validate its (element-)properties
+        MyComponent.propTypes = {
+        // React supplies us with a bunch of types, like string
+        customData: PropTypes.string
+        };
+
+
+        reactElement = <div>{elements}</div>;
+
+        let renderTarget = document.getElementById("app");
+
+
+
+    </script>
+
+</body>
+</html>
